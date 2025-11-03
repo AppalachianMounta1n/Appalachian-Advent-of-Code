@@ -1,6 +1,6 @@
-# {year} Day {day} - {language}
+# 2015 Day 2 - Python
 ## Challenge Description
 
 
 # Challenge Link
-[{year} Day {day}]()
+[2015 Day 2]()
