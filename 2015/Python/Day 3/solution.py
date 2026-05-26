@@ -1,17 +1,30 @@
 startingLocation = (0,0)
-history = [startingLocation]
+santaHistory = [startingLocation]
+roboHistory = [startingLocation]
 
 with open("input.txt") as f:
-    directions = f.read()
+    directions = list(f.read())
 
-for i in directions:
-    if i == "^":
-        history.append((history[-1][0], history[-1][1] + 1))
-    elif i == "v":
-        history.append((history[-1][0], history[-1][1] - 1))
-    elif i == ">":
-        history.append((history[-1][0] + 1, history[-1][1]))
-    elif i == "<":
-        history.append((history[-1][0] - 1, history[-1][1]))
+for i, v in enumerate(directions):
+    if i % 2 == 0:
+        if v == "^":
+            santaHistory.append((santaHistory[-1][0], santaHistory[-1][1] + 1))
+        elif v == "v":
+            santaHistory.append((santaHistory[-1][0], santaHistory[-1][1] - 1))
+        elif v == ">":
+            santaHistory.append((santaHistory[-1][0] + 1, santaHistory[-1][1]))
+        elif v == "<":
+            santaHistory.append((santaHistory[-1][0] - 1, santaHistory[-1][1]))
+    else:
+        if v == "^":
+            roboHistory.append((roboHistory[-1][0], roboHistory[-1][1] + 1))
+        elif v == "v":
+            roboHistory.append((roboHistory[-1][0], roboHistory[-1][1] - 1))
+        elif v == ">":
+            roboHistory.append((roboHistory[-1][0] + 1, roboHistory[-1][1]))
+        elif v == "<":
+            roboHistory.append((roboHistory[-1][0] - 1, roboHistory[-1][1]))
 
-print(len(set(history)))
+print("Santa Presents Delivered: ", len(set(santaHistory)))
+print("Robot Presents Delivered: ", len(set(roboHistory)))
+print("Total Presents Delivered: ", len(set(santaHistory).union(set(roboHistory))))
